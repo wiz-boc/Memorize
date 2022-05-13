@@ -19,10 +19,12 @@ struct Cardify: ViewModifier {
             if isFaceUp {
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
-                content
+                
             } else {
                 shape.fill()
             }
+            content
+                .opacity(isFaceUp ? 1 : 0)
         }
     }
     
@@ -34,6 +36,6 @@ struct Cardify: ViewModifier {
 
 extension View {
     func cardify(isFaceUp: Bool) -> some View {
-        self.modifier(Cardify(isFaceUp: isFaceup))
+        self.modifier(Cardify(isFaceUp: isFaceUp))
     }
 }
